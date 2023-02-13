@@ -36,4 +36,5 @@ int main() {
 		pref(row_upper - 1, col_right) - 
 		pref(row_lower, col_left - 1);
 
+	return 0;
 }

@@ -6,6 +6,7 @@ using namespace std;
 using namespace __gnu_pbds;
 
 int main() {
+	// multiset
 	tree <int, null_type, less_equal<int>, rb_tree_tag, tree_order_statistics_node_update> tree;
 
 	// 1 2 2 5 7 7 9
@@ -41,5 +42,12 @@ int main() {
 	// 0 1 2 3 4  5  6
 	//           kth
 	
+	
+	// undefined
+	auto f = tree.find(2);
+	// if less_equal <int> --> less <int> it will bes set
+	// in stl set there is no order_of_key and find_by_order
+
 	return 0;
+
 }

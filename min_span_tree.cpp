@@ -5,7 +5,7 @@ using namespace std;
 
 struct cmp {
 	bool operator()(const vector <int> & a, const vector <int> & b) {
-		// asc by w
+		asc by w
 		return a[2] > b[2];
 	}
 };
@@ -15,7 +15,7 @@ int main() {
 	vector <vector <int>> g(n);
 
 
-	// dsu
+	// dsu 
 	int p[n]; int sz[n];
 	function <int(int)> find;
 	function <void(int, int)> merge;

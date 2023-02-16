@@ -27,7 +27,8 @@ int main() {
 	};
 
 	// query
-	int row_upper, row_lower; // row_upper <= row_lower (0 1 2 3 ... up to down);
+	// row_upper <= row_lower (0 1 2 3 ... up to down)
+	int row_upper, row_lower;
 	int col_left, col_right;
 
 	int ans =

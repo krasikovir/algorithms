@@ -34,6 +34,7 @@ int main() {
     queue <int> q;
     for (int i = 0; i < 26; ++i) if (trie[0][i] != 0) fail[trie[0][i]] = 0, q.push(trie[0][i]);
 
+	// build fails
     for (;q.size();) {
         int s = q.front(); q.pop();
         for (int i = 0; i < 26; ++i) {
@@ -49,6 +50,7 @@ int main() {
         }
     }
 
+	// go through text processing states
     for (int i = 0, c = 0; i < text.size(); ++i) {
         for (;trie[c][text[i] - 'a'] == -1;) c = fail[c];
         c = trie[c][text[i] - 'a'];

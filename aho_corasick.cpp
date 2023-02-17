@@ -2,12 +2,13 @@ using namespace std;
 #include <bits/stdc++.h>
 
 int main() {
-    vector <string> dict = {
+    unordered_set <string> dict = {
 		"ahoc",
 		"hoc",
 		"cora",
 		"corr"
     };
+
     string text = "ahocorasick";
 
     int n = 10; for (auto x : dict) n += x.size();
@@ -19,13 +20,13 @@ int main() {
 
     // c <-- counter (root <- 0)
     // s <-- state
-    for (int i = 0, c = 0, s = 0; i < dict.size(); ++i, s = 0) {
-        for (int j = 0; j < dict[i].size(); ++j) {
-            if (trie[s][dict[i][j] - 'a'] == -1) trie[s][dict[i][j] - 'a'] = ++c;
-            s = trie[s][dict[i][j] - 'a'];
-        }
-        word[s].insert(dict[i]);
-    }
+	for (auto [it, c, s] = tuple(dict.begin(), 0, 0); it != dict.end(); ++it, s = 0) {
+		for (auto [j, w] = tuple(0, *it); j < w.size(); ++j) {
+			if (trie[s][w[j] - 'a'] == -1) trie[s][w[j] - 'a'] = ++c;
+			s = trie[s][w[j] - 'a'];
+		}
+		word[s].insert(*it);
+	}
 
     // link root children to root
     for (int i = 0; i < 26; ++i) if (trie[0][i] == -1) trie[0][i] = 0;
@@ -54,12 +55,10 @@ int main() {
     for (int i = 0, c = 0; i < text.size(); ++i) {
         for (;trie[c][text[i] - 'a'] == -1;) c = fail[c];
         c = trie[c][text[i] - 'a'];
-        for (int j = 0; j < dict.size(); ++j) {
-            if (word[c].count(dict[j])) {
-                cout << i - dict[j].size() + 1 << " " << i << "\n";
-                cout << dict[j] << "\n\n";
-            }
-        }
+		for (auto x : word[c]) {
+			cout << i - x.size() + 1 << " " << i << "\n";
+			cout << x << "\n\n";
+		}
     }
     return 0;
 }

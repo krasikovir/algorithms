@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-unordered_map <int, string> um;
+unordered_map <int, vector <string>> um;
 
 struct node {
 	int next[26], go[26];
@@ -27,7 +27,7 @@ void add(string & s) {
 		v = trie[v].next[ch - 'a'];
 	}
 	trie[v].term = true;
-	um[v] = s;
+	um[v].push_back(s);
 }
 
 int go(int v, char ch);
@@ -51,12 +51,18 @@ int go(int v, char ch) {
 int main() {
 	vector <string> dict = {"he", "she", "hers", "his"};
 	string text = "ahishers";
+
+	for (auto x : dict) add(x);
+
 	for (int i = 0, c = 0; i < text.size(); ++i) {
+
+		// if vertex is terminal (c <- vertex) than print all the words ended here
 		c = go(c, text[i]);
 		if (um.count(c)) {
-			cout << um[c] << "\n";
-			cout << i << "\n\n";
+			for (auto x : um[c]) cout << x << " ";
+			cout << "\n";
 		}
 	}
 	return 0;
 }
+

@@ -2,7 +2,7 @@
 using namespace std;
 
 int main() {
-	int n; cin >> n;
+	int n;
 	int arr[n];
 
 	int p[n]; memset(p, -1, sizeof p);

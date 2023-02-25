@@ -21,8 +21,7 @@ int main() {
 		}
 	}
 
-	// possibility
+	// detect cycle in directed graph
 	ans.size() == n;
-
 	return 0;
 }

@@ -13,9 +13,8 @@ int main() {
 			if (arr[i] > arr[j] && dp[j] + 1 >= dp[i]) p[i] = j, dp[i] = dp[j] + 1;
 
 	int idx = max_element(dp, dp + n) - dp;
-
-	vector <int> ans; for (;p[idx] != -1; ans.push_back(idx), idx = p[idx]); ans.push_back(idx);
-
+	vector <int> ans; for (;idx != -1; ans.push_back(idx), idx = p[idx]);
+	// indices of elemets
 	reverse(ans.begin(), ans.end());
 	return 0;
 }

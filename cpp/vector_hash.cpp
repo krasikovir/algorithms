@@ -1,12 +1,11 @@
 include <bits/stdc++.h>
 using namespace std;
-typedef unsigned long long ull;
 
-const ull C = 0x9e3779b9;
+const long long C = 0x9e3779b9;
 
 struct HASHER {
-	ull operator()(const vector <int> & arr) const {
-		ull ans = 0;
+	long long operator()(const vector <int> & arr) const {
+		long long ans = 0;
 		for (const auto & x : arr) ans ^= hash<int>()(x) + C + (ans << 6) + (ans >> 2);
 		return ans;
 	}

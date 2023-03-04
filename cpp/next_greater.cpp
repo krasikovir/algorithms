@@ -22,7 +22,7 @@ int main() {
 		v.push_back(i);
 	}
 
-	// rest item doesn't have nextgreaters
+	// rest items doesn't have nextgreaters
 	for (auto x : v) right[x] = -1;
 
 	// 2  1  5  6  2  3   arr

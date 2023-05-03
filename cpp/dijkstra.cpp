@@ -5,7 +5,7 @@ int main() {
 	int n;
 
 	// a -> {b, w}
-	vector <pair <int, int>> g(n);
+	vector <pair <int, int>> g[n];
 
 	// initial vertex
 	// find shortest paths
@@ -20,7 +20,7 @@ int main() {
 	};
 
 	priority_queue <pair <int, int>, vector <pair <int, int>>, cmp> pq;
-	pq.insert({0, k});
+	pq.push({0, k});
 
 	while (pq.size()) {
 		int v = pq.top().second; pq.pop();

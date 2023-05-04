@@ -3,36 +3,28 @@ using namespace std;
 
 int main() {
 	int n;
-
-	// a -> {b, w}
+	
+	// a -> {b, w};
 	vector <pair <int, int>> g[n];
 
-	// initial vertex
-	// find shortest paths
-	int k; int d[n];
+	// src - start vertex
+	int src; int d[n];
 	fill(d, d + n, INT_MAX);
-	d[k] = 0;
+	d[src] = 0;
 
+	set <pair <int, int>> st;
+	st.insert({0, src});
 
-	// min heap
-	auto cmp = [&](const pair <int, int> & a, const pair <int, int> & b) {
-		return a.first > b.first;
-	};
+	for (;st.size();) {
+		auto [dist, v] = *st.begin();
+		st.erase({dist, v});
 
-	priority_queue <pair <int, int>, vector <pair <int, int>>, cmp> pq;
-	pq.push({0, k});
-
-	while (pq.size()) {
-		int v = pq.top().second; pq.pop();
-		for (auto & [u, w] : g[v]) {
+		for (auto [u, w] : g[v]) {
 			if (d[v] + w < d[u]) {
+				st.erase({-d[u], u});
 				d[u] = d[v] + w;
-				pq.push({d[u], u});
+				st.insert({-d[u], u});
 			}
 		}
 	}
-
-	int res = *max_element(d, d + n);
-	res = (res == INT_MAX ? -1 : res);
-	return 0;
 }

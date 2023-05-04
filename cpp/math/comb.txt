@@ -1,0 +1,4 @@
+n balls
+k boxes
+
+((n, k)) = (n + k - 1, k - 1)

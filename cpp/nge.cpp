@@ -7,7 +7,7 @@ int main() {
 
 	vector <int> v;
 	for (int i = 0; i < n; ++i) {
-		for (;v.size() && arr[v.back()] < arr[i]; nge[v.back()] = i, v.pop_back());
+		for (;v.size() && arr[v.back()] <= arr[i]; nge[v.back()] = i, v.pop_back());
 		v.push_back(i);
 	}
 

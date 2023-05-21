@@ -21,9 +21,9 @@ int main() {
 
 		for (auto [u, w] : g[v]) {
 			if (d[v] + w < d[u]) {
-				st.erase({-d[u], u});
+				st.erase({d[u], u});
 				d[u] = d[v] + w;
-				st.insert({-d[u], u});
+				st.insert({d[u], u});
 			}
 		}
 	}

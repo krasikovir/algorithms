@@ -5,7 +5,8 @@ int main() {
 	int n;
 	int vec[n];
 
-	int N = n; while ((N - 1) & N != 0) ++N;
+	int N = n;
+	for (;__builtin_popcount(N) != 1; ++N);
 	int arr[2 * N]; memset(arr, 0, sizeof(arr));
 	for (int i = 0; i < n; ++i) arr[N + i] = vec[i];
 

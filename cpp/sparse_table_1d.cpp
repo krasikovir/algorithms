@@ -14,7 +14,7 @@ int main() {
 	for (int p = 1; p < log[n] + 1; ++p) {
 		for (int i = 0; i < n; ++i) {
 			int a = st[p - 1][i];
-			int b = st[p - 1][i + (1 << (p - 1))];
+			int b = i + (1 << (p - 1)) < number ? st[p - 1][i + (1 << (p - 1))] : INT_MAX;
 			st[p][i] = min(a, b);
 		}
 	}
